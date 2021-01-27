@@ -1,0 +1,1 @@
+mongodb+srv://twcore:<password>@cluster0.a0vcj.mongodb.net/<dbname>?retryWrites=true&w=majority
