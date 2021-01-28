@@ -29,6 +29,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 
 	if finded {
 		http.Error(w, "Error, User already exist", http.StatusBadRequest)
+		return
 	}
 
 	_, status, err := db.InsertUserRegistered(T)
@@ -36,7 +37,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, fmt.Sprintf("Error, Couldn't register user: %s", err.Error()), http.StatusInternalServerError)
 		return
 	}
-	if status {
+	if !status {
 		http.Error(w, "Error, Couldn't insert user", http.StatusInternalServerError)
 		return
 	}
